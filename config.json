@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "domain": "http://localhost",
+    "dbPath": "mongodb://localhost:27017/",
+    "baseUrl": "/api",
+    "db": "gc",
+    "port": 9999
+  },
+  "stage": {
+    "domain": "http://34.234.84.113",
+    "dbPath": "mongodb://localhost:27017/",
+    "baseUrl": "/api",
+    "db": "gc",
+    "port": 9999
+  },
+  "prod": {
+    "domain": "http://localhost",
+    "dbPath": "mongodb://localhost:27017/",
+    "baseUrl": "/api",
+    "db": "gc",
+    "port": 9999
+  }
+}

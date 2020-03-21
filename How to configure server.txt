@@ -1,0 +1,8 @@
+1.) Install mongodb
+2.) Configure Pm2
+    a.) Install pm2 globally
+    b.) set pm2 NODE_ENV while starting the app.
+        EX: NODE_ENV=prod pm2 start ./server/server.js
+    c.) After installing all of them please enter pm2 save.
+    d.) To restart use pm2 restart all (to restart all of them.),
+    e.) for apnservice navigate to apnservice or certificate path will not work.

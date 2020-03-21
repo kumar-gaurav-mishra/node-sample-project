@@ -1,0 +1,1162 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "GC Suite Server",
+		"description": "GC Suite Server API docs"
+	},
+	"basePath": "/api",
+	"schemes": [
+		"http"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/users": {
+			"post": {
+				"tags": [
+					"Users"
+				],
+				"description": "This api creates user",
+				"operationId": "/users",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "User Info",
+					"in": "body",
+					"description": "Create user",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/createUser"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"put": {
+				"tags": [
+					"Users"
+				],
+				"description": "This api updates user",
+				"operationId": "/users",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "User Info",
+					"in": "body",
+					"description": "Update user",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/updateUser"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"get": {
+				"tags": [
+					"Users"
+				],
+				"description": "This api returns matching users.",
+				"operationId": "/users",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+						"name": "_id",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "name",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "email",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/cases": {
+			"post": {
+				"tags": [
+					"Cases"
+				],
+				"description": "This api creates case",
+				"operationId": "/cases",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "Case Info",
+					"in": "body",
+					"description": "Create case",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/createCase"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"put": {
+				"tags": [
+					"Cases"
+				],
+				"description": "This api updates case",
+				"operationId": "/cases",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "Case Info",
+					"in": "body",
+					"description": "Update case",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/updateCase"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"get": {
+				"tags": [
+					"Cases"
+				],
+				"description": "This api returns matching cases.",
+				"operationId": "/cases",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+						"name": "_id",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "name",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Cases"
+				],
+				"description": "This api delete case.",
+				"operationId": "/cases",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+						"name": "_id",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/duplicate": {
+			"get": {
+				"tags": [
+					"Entity"
+				],
+				"description": "This api returns matching entity. This contain duplicate entity.",
+				"operationId": "/duplicate",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "docId",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "caseId",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/entity": {
+			"post": {
+				"tags": [
+					"Entity"
+				],
+				"description": "This api creates entity",
+				"operationId": "/entity",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "Entity Info",
+					"in": "body",
+					"description": "Create entity",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/createEntity"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"put": {
+				"tags": [
+					"Entity"
+				],
+				"description": "This api updates entity",
+				"operationId": "/entity",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "Entity Info",
+					"in": "body",
+					"description": "Update entity",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/updateEntity"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"get": {
+				"tags": [
+					"Entity"
+				],
+				"description": "This api returns matching entity. This does not contain duplicate entity.",
+				"operationId": "/entity",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "docId",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "caseId",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Entity"
+				],
+				"description": "This api delete entity.",
+				"operationId": "/entity",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "_id",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/find": {
+			"get": {
+				"tags": [
+					"Entity"
+				],
+				"description": "This api returns matching entity. Use this api for autocomplete.",
+				"operationId": "/entity",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "name",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/docs": {
+			"post": {
+				"tags": [
+					"Docs"
+				],
+				"description": "This api creates docs",
+				"operationId": "/docs",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "User Info",
+					"in": "body",
+					"description": "Create docs",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/createDoc"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"put": {
+				"tags": [
+					"Docs"
+				],
+				"description": "This api updates docs",
+				"operationId": "/docs",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "User Info",
+					"in": "body",
+					"description": "Update docs",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/updateDoc"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"get": {
+				"tags": [
+					"Docs"
+				],
+				"description": "This api returns matching docs.",
+				"operationId": "/docs",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+						"name": "_id",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "title",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "caseId",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "docId",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Docs"
+				],
+				"description": "This api delete doc.",
+				"operationId": "/docs",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+						"name": "_id",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "tenantId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/login": {
+			"post": {
+				"tags": [
+					"Users"
+				],
+				"description": "This api creates user",
+				"operationId": "/users",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "User Info",
+					"in": "body",
+					"description": "Update user",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/login"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			}
+		},
+		"/tenants": {
+			"post": {
+				"tags": [
+					"Tenants"
+				],
+				"description": "This api creates tenants",
+				"operationId": "/tenants",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "Tenant Info",
+					"in": "body",
+					"description": "Create tenant",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/createTenant"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"put": {
+				"tags": [
+					"Tenants"
+				],
+				"description": "This api updates Tenant",
+				"operationId": "/tenants",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+					"name": "Tenant Info",
+					"in": "body",
+					"description": "Update Tenant",
+					"required": true,
+					"schema": {
+						"$ref": "#/definitions/updateTenant"
+					}
+				}],
+				"responses": {
+					"200": {}
+				}
+			},
+			"get": {
+				"tags": [
+					"Tenants"
+				],
+				"description": "This api returns matching tenants.",
+				"operationId": "/tenants",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [{
+						"name": "_id",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "name",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"createUser": {
+			"properties": {
+				"name": {
+					"required": false,
+					"type": "string"
+				},
+				"email": {
+					"required": true,
+					"type": "string"
+				},
+				"password": {
+					"required": true,
+					"type": "string"
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"updateUser": {
+			"properties": {
+				"_id": {
+					"required": false,
+					"type": "string"
+				},
+				"name": {
+					"required": false,
+					"type": "string"
+				},
+				"email": {
+					"required": false,
+					"type": "string"
+				},
+				"password": {
+					"required": false,
+					"type": "string"
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"updateEntity": {
+			"properties": {
+				"_id": {
+					"required": true,
+					"type": "string"
+				},
+				"firstName": {
+					"required": false,
+					"type": "string"
+				},
+				"middleName": {
+					"required": false,
+					"type": "string"
+				},
+				"lastName": {
+					"required": false,
+					"type": "string"
+				},
+				"suffix": {
+					"required": false,
+					"type": "string"
+				},
+				"socialSecurityNo": {
+					"required": false,
+					"type": "string"
+				},
+				"idOrPassportNo": {
+					"required": false,
+					"type": "string"
+				},
+				"phone": {
+					"required": false,
+					"type": "string"
+				},
+				"email": {
+					"required": false,
+					"type": "string"
+				},
+				"dob": {
+					"required": false,
+					"type": "string"
+				},
+				"address1": {
+					"required": false,
+					"type": "string"
+				},
+				"address2": {
+					"required": false,
+					"type": "string"
+				},
+				"city": {
+					"required": false,
+					"type": "string"
+				},
+				"state": {
+					"required": false,
+					"type": "string"
+				},
+				"zip": {
+					"required": false,
+					"type": "string"
+				},
+				"country": {
+					"required": false,
+					"type": "string"
+				},
+				"accountNo": {
+					"required": false,
+					"type": "string"
+				},
+				"minor": {
+					"required": false,
+					"type": "boolean"
+				},
+				"others": {
+					"required": false,
+					"type": "string"
+				},
+				"comments": {
+					"required": false,
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				},
+				"docId": {
+					"required": false,
+					"type": "string"
+				},
+				"caseId": {
+					"required": false,
+					"type": "string"
+				}
+			}
+		},
+		"createEntity": {
+			"properties": {
+				"_id": {
+					"required": false,
+					"type": "string"
+				},
+				"firstName": {
+					"required": true,
+					"type": "string"
+				},
+				"middleName": {
+					"required": false,
+					"type": "string"
+				},
+				"lastName": {
+					"required": false,
+					"type": "string"
+				},
+				"suffix": {
+					"required": false,
+					"type": "string"
+				},
+				"socialSecurityNo": {
+					"required": false,
+					"type": "string"
+				},
+				"phone": {
+					"required": false,
+					"type": "string"
+				},
+				"email": {
+					"required": false,
+					"type": "string"
+				},
+				"idOrPassportNo": {
+					"required": false,
+					"type": "string"
+				},
+				"dob": {
+					"required": false,
+					"type": "string"
+				},
+				"address1": {
+					"required": false,
+					"type": "string"
+				},
+				"address2": {
+					"required": false,
+					"type": "string"
+				},
+				"city": {
+					"required": false,
+					"type": "string"
+				},
+				"state": {
+					"required": false,
+					"type": "string"
+				},
+				"zip": {
+					"required": false,
+					"type": "string"
+				},
+				"country": {
+					"required": false,
+					"type": "string"
+				},
+				"accountNo": {
+					"required": false,
+					"type": "string"
+				},
+				"minor": {
+					"required": false,
+					"type": "boolean"
+				},
+				"others": {
+					"required": false,
+					"type": "string"
+				},
+				"comments": {
+					"required": false,
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				},
+				"docId": {
+					"required": false,
+					"type": "string"
+				},
+				"caseId": {
+					"required": false,
+					"type": "string"
+				}
+			}
+		},
+		"createCase": {
+			"properties": {
+				"name": {
+					"required": true,
+					"type": "string"
+				},
+				"description": {
+					"required": false,
+					"type": "string"
+				},
+				"extMatterName": {
+					"required": false,
+					"type": "string"
+				},
+				"extMatterNo": {
+					"required": false,
+					"type": "number"
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"UpdateCase": {
+			"properties": {
+				"_id": {
+					"required": true,
+					"type": "string"
+				},
+				"name": {
+					"required": false,
+					"type": "string"
+				},
+				"description": {
+					"required": false,
+					"type": "string"
+				},
+				"extMatterName": {
+					"required": false,
+					"type": "string"
+				},
+				"extMatterNo": {
+					"required": false,
+					"type": "number"
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"createDoc": {
+			"properties": {
+				"title": {
+					"required": false,
+					"type": "string"
+				},
+				"caseId": {
+					"required": false,
+					"type": "string"
+				},
+				"docId": {
+					"required": false,
+					"type": "string"
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"updateDoc": {
+			"properties": {
+				"_id": {
+					"required": true,
+					"type": "string"
+				},
+				"title": {
+					"required": false,
+					"type": "string"
+				},
+				"caseId": {
+					"required": false,
+					"type": "string"
+				},
+				"docId": {
+					"required": false,
+					"type": "string"
+				},
+				"tenantId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"login": {
+			"properties": {
+				"email": {
+					"required": true,
+					"type": "string"
+				},
+				"password": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"createTenant": {
+			"properties": {
+				"name": {
+					"required": true,
+					"type": "string"
+				},
+				"email": {
+					"required": true,
+					"type": "string"
+				},
+				"password": {
+					"required": true,
+					"type": "string"
+				},
+				"zylabServer": {
+					"required": false,
+					"type": "string"
+				},
+				"legalHoldProServer": {
+					"required": false,
+					"type": "string"
+				},
+				"url": {
+					"required": true,
+					"type": "string"
+				},
+				"orgId": {
+					"required": true,
+					"type": "string"
+				}
+			}
+		},
+		"updateTenant": {
+			"properties": {
+				"_id": {
+					"required": true,
+					"type": "string"
+				},
+				"name": {
+					"required": false,
+					"type": "string"
+				},
+				"email": {
+					"required": false,
+					"type": "string"
+				},
+				"password": {
+					"required": false,
+					"type": "string"
+				},
+				"zylabServer": {
+					"required": false,
+					"type": "string"
+				},
+				"legalHoldProServer": {
+					"required": false,
+					"type": "string"
+				},
+				"url": {
+					"required": false,
+					"type": "string"
+				},
+				"orgId": {
+					"required": false,
+					"type": "string"
+				}
+			}
+		}
+	}
+}
